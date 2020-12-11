@@ -1,0 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<nav>
+	<ul>
+		<li><a href="index.jsp?section=sale_refister"></a>판매등록</li>
+		<li><a href="index.jsp?section="></a>판매현황</li>
+		<li><a href="index.jsp?section=sale_price"></a>매장별판매액</li>
+		<li><a href="index.jsp?section="></a>상품별판매액</li>
+		<li><a href="index.jsp">홈으로</a></li>
+	</ul>
+</nav>

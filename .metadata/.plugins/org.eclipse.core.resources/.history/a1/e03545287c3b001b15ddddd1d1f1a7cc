@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+    	    <%@page import="java.sql.*" %>
+    	    <% 
+    	    try {
+				Class.forName("oracle.jdbc.OracleDriver");
+				Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "sdh-23", "1234");
+				
+				Statement stmt = conn.createStatement();
+				
+				%>
+				<form action="insert_shop">
+		<table border="1">
+			<tr>
+				<td>매장코드</td>
+				<td><input type="text" name="scode"></td>
+			</tr>
+			<tr>
+				<td>매장이름</td>
+				<select name="pname">
+				<%
+				String query = "INSERT INTO TBL_PRODUCT_01(PCODE, NAME, COST) VALUES('%s', '%s', %s)" ;
+				
+				ResultSet rs = stmt.executeQuery(String.format(query, pcode, saledate, scode, amount));
+				
+				while(rs.next()){
+					%><option value="<%=rs.getString%>"><%=rs2.getString(2) %><%				
+				}
+				 %>
+				
+				</select>
+				<td><input type="text" name="shop_name"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="샵 입력하기">
+			</tr>
+		</table>
+	</form>
+				
+				conn.commit();
+				
+				stmt.close();
+				conn.close();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+			
+			%>
+    
